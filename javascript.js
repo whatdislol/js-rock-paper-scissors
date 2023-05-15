@@ -41,7 +41,7 @@ function playRound(){
     }
 }
 
-function game(){
+/*function game(){
     playerPoints = 0;
     computerPoints = 0;
     while(playerPoints !== 5 && computerPoints !== 5){
