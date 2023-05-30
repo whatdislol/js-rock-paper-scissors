@@ -47,38 +47,40 @@ function game(){
         playRound();
         switch(result){
             case "win":
-                console.log("You win!");
+                roundWinner.textContent = "You win!";
                 playerPoints++;
                 break;
             case "lose":
-                console.log("You lose!");
+                roundWinner.textContent = "You lose!";
                 computerPoints++;
                 break;
             case "tie":
-                console.log("It's a tie!");
+                roundWinner.textContent = "It's a tie!";
                 break;
         }
-        //console.log(`Player score: ${playerPoints}  Computer score: ${computerPoints}`)
     }
     if(computerPoints === 5){
-        console.log("You've lost the game!");
+        winnerScreen.textContent = "You've lost the game!";
     }
     if(playerPoints === 5){
-        console.log("You've won the game!");
+        winnerScreen.textContent = "You've won the game!";
     }
+    scoreboard.textContent = `Player score: ${playerPoints} Computer score: ${computerPoints}`;
 }
 
-const buttons = document.querySelectorAll('button');
-const btnRock = document.querySelector('.btnRock');
-const btnPaper = document.querySelector('.btnPaper');
-const btnScissors = document.querySelector('.btnScissors');
+const buttons = document.querySelectorAll("button");
+const btnRock = document.querySelector(".btnRock");
+const btnPaper = document.querySelector(".btnPaper");
+const btnScissors = document.querySelector(".btnScissors");
 
-btnRock.addEventListener('click', () => playerSelection = "rock");
-btnPaper.addEventListener('click', () => playerSelection = "paper");
-btnScissors.addEventListener('click', () => playerSelection = "scissors");
-buttons.forEach(button => button.addEventListener('click', () => {
-    game();
-    console.log(playerSelection);
-    console.log(computerSelection);
-    console.log(`Player score: ${playerPoints}  Computer score: ${computerPoints}`);
-}))
+btnRock.addEventListener("click", () => playerSelection = "rock");
+btnPaper.addEventListener("click", () => playerSelection = "paper");
+btnScissors.addEventListener("click", () => playerSelection = "scissors");
+buttons.forEach(button => button.addEventListener("click", () => game()));
+
+const roundWinner = document.querySelector(".roundWinner");
+const scoreboard = document.querySelector(".scoreboard");
+const winnerScreen = document.querySelector(".winnerScreen");
+
+roundWinner.textContent = "Let's go!";
+scoreboard.textContent = "Player score: 0 Computer score: 0";
