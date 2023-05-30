@@ -15,7 +15,6 @@ function getComputerChoice() {
 let playerSelection;
 let result;
 function playRound(){
-    //playerSelection = prompt("Enter rock, paper or scissors.", "").toLowerCase();
     getComputerChoice();
     if(playerSelection === computerSelection){
         return result = "tie";
