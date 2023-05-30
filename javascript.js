@@ -1,5 +1,5 @@
 let randomNumber;
-let computerSelection
+let computerSelection;
 
 function getComputerChoice() {
     randomNumber = Math.floor(Math.random() * 3);
@@ -11,10 +11,11 @@ function getComputerChoice() {
         return computerSelection = "scissors";
     }
 }
-// computerSelection = "paper"; 
 
+let playerSelection;
+let result;
 function playRound(){
-    playerSelection = prompt("Enter rock, paper or scissors.", "").toLowerCase();
+    //playerSelection = prompt("Enter rock, paper or scissors.", "").toLowerCase();
     getComputerChoice();
     if(playerSelection === computerSelection){
         return result = "tie";
@@ -36,15 +37,13 @@ function playRound(){
         } else {
             return result = "lose";
         }
-    } else {
-        return result = "error";
-    }
+    } 
 }
 
+let playerPoints = 0;
+let computerPoints = 0;
 function game(){
-    playerPoints = 0;
-    computerPoints = 0;
-    while(playerPoints !== 5 && computerPoints !== 5){
+    if(playerPoints !== 5 && computerPoints !== 5){
         playRound();
         switch(result){
             case "win":
@@ -58,11 +57,8 @@ function game(){
             case "tie":
                 console.log("It's a tie!");
                 break;
-            case "error":
-                console.log("ERROR");
-                break;
         }
-        console.log(`Player score: ${playerPoints}  Computer score: ${computerPoints}`)
+        //console.log(`Player score: ${playerPoints}  Computer score: ${computerPoints}`)
     }
     if(computerPoints === 5){
         console.log("You've lost the game!");
@@ -72,5 +68,17 @@ function game(){
     }
 }
 
-game();
+const buttons = document.querySelectorAll('button');
+const btnRock = document.querySelector('.btnRock');
+const btnPaper = document.querySelector('.btnPaper');
+const btnScissors = document.querySelector('.btnScissors');
 
+btnRock.addEventListener('click', () => playerSelection = "rock");
+btnPaper.addEventListener('click', () => playerSelection = "paper");
+btnScissors.addEventListener('click', () => playerSelection = "scissors");
+buttons.forEach(button => button.addEventListener('click', () => {
+    game();
+    console.log(playerSelection);
+    console.log(computerSelection);
+    console.log(`Player score: ${playerPoints}  Computer score: ${computerPoints}`);
+}))
